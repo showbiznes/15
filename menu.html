@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Меню бара и Crazy Menu | Velvet 39 Калининград</title>
+  <meta name="description" content="Карта бара и эксклюзивное Crazy Menu ночного клуба Velvet 39 в Калининграде. Премиальный виски, французский коньяк, шампанское Moët & Chandon, авторские коктейли и приватные шоу.">
+  <meta name="keywords" content="меню Velvet 39, карта бара, виски, шампанское, Crazy Menu, стриптиз клуб Калининград, Румянцева 5А">
+  <meta property="og:title" content="Меню бара и Crazy Menu | Velvet 39">
+  <meta property="og:description" content="Коллекционный алкоголь, авторские коктейли, деликатесные закуски и Crazy Menu клуба Velvet 39.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Skip link for accessibility -->
+  <a href="#menuContent" class="skip-link">Перейти к меню</a>
+
+  <!-- Fixed 18+ Badge -->
+  <div class="age-badge">18+</div>
+
+  <!-- Cursor Follower -->
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <header>
+    <nav class="nav scrolled" id="mainNav">
+      <a href="index.html" class="nav__logo">
+        <img src="velvet_logo.png" alt="VELVET" height="38">
+        <span>39</span>
+      </a>
+
+      <div class="nav__links">
+        <a href="index.html#hero" class="nav__link">Главная</a>
+        <a href="index.html#about" class="nav__link">О клубе</a>
+        <a href="menu.html" class="nav__link nav__link--menu-btn active">Меню</a>
+        <a href="index.html#vip-room" class="nav__link">VIP Room</a>
+        <a href="index.html#occasions" class="nav__link">Особые поводы</a>
+        <a href="index.html#packages" class="nav__link">VIP Боксы</a>
+        <a href="index.html#gallery" class="nav__link">Галерея</a>
+        <a href="index.html#contact" class="nav__link">Контакты</a>
+      </div>
+
+      <div class="nav__right">
+        <a href="tel:+79062375785" class="nav__tel">+7 (906) 237-57-85</a>
+        <button class="nav__burger" id="navBurger" aria-label="Открыть мобильное меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#hero" class="mobile-menu__link" data-mobile-link>Главная</a>
+    <a href="index.html#about" class="mobile-menu__link" data-mobile-link>О клубе</a>
+    <a href="menu.html" class="mobile-menu__link" style="color: var(--gold);" data-mobile-link>Меню</a>
+    <a href="index.html#vip-room" class="mobile-menu__link" data-mobile-link>VIP Room</a>
+    <a href="index.html#occasions" class="mobile-menu__link" data-mobile-link>Особые поводы</a>
+    <a href="index.html#packages" class="mobile-menu__link" data-mobile-link>VIP Боксы</a>
+    <a href="index.html#gallery" class="mobile-menu__link" data-mobile-link>Галерея</a>
+    <a href="index.html#contact" class="mobile-menu__link" data-mobile-link>Контакты</a>
+    <a href="tel:+79062375785" class="mobile-menu__tel">+7 (906) 237-57-85</a>
+  </div>
+
+  <main id="menuContent">
+    <!-- ═══ MENU HERO ═══ -->
+    <section class="menu-page-hero">
+      <div class="section__container">
+        <span class="section__kicker">Карта бара и клубное меню</span>
+        <h1 class="menu-page-hero__title">Меню Velvet 39</h1>
+        <p class="menu-page-hero__desc">
+          Коллекционный односолодовый виски, элитные сорта коньяка, шампанские дома Франции, авторские миксы и эксклюзивное Crazy Menu для незабываемого отдыха.
+        </p>
+        <a href="tel:+79062375785" class="menu-page-hero__cta">
+          Забронировать стол: +7 (906) 237-57-85
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ STICKY CATEGORY TABS ═══ -->
+    <nav class="menu-nav-tabs" aria-label="Разделы меню">
+      <div class="menu-nav-tabs__track">
+        <button class="menu-nav-tab active" data-target="cat-whiskey">Виски</button>
+        <button class="menu-nav-tab" data-target="cat-cognac">Коньяк & Крепкое</button>
+        <button class="menu-nav-tab" data-target="cat-champagne">Шампанское & Вина</button>
+        <button class="menu-nav-tab" data-target="cat-cocktails">Коктейли</button>
+        <button class="menu-nav-tab" data-target="cat-snacks">Закуски & Напитки</button>
+        <button class="menu-nav-tab" data-target="cat-crazy">Crazy Menu</button>
+        <button class="menu-nav-tab" data-target="cat-karaoke">Crazy Караоке</button>
+      </div>
+    </nav>
+
+    <!-- ═══ MENU SECTIONS ═══ -->
+    <div class="section__container">
+
+      <!-- ВИСКИ -->
+      <section class="menu-category-section" id="cat-whiskey">
+        <div class="menu-category-heading">
+          <h2 class="menu-category-heading__title">Виски</h2>
+        </div>
+        <div class="menu-items-table">
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Макаллан 12 лет</span>
+              <span class="menu-row__desc">Шотландия · односолодовый премиум</span>
+            </div>
+            <span class="menu-row__price">1 200 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Гленливет 12 лет</span>
+              <span class="menu-row__desc">Шотландия · классический спейсайд</span>
+            </div>
+            <span class="menu-row__price">850 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Чивас ригал 12</span>
+              <span class="menu-row__desc">Шотландия · бленд 12 лет</span>
+            </div>
+            <span class="menu-row__price">750 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Джек Дениалс</span>
+              <span class="menu-row__desc">США · легендарный теннесси виски</span>
+            </div>
+            <span class="menu-row__price">550 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Джемесон</span>
+              <span class="menu-row__desc">Ирландия · тройная дистилляция</span>
+            </div>
+            <span class="menu-row__price">550 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Джек Дэниэлс Фаер</span>
+              <span class="menu-row__desc">США · с пряной корицей</span>
+            </div>
+            <span class="menu-row__price">500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Джим Бим рэд стаг</span>
+              <span class="menu-row__desc">США · бурбон с черной вишней</span>
+            </div>
+            <span class="menu-row__price">490 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Балантайнс</span>
+              <span class="menu-row__desc">Шотландия · купажированный виски</span>
+            </div>
+            <span class="menu-row__price">490 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Блэк Вельвет Резерв 8</span>
+              <span class="menu-row__desc">Канада · мягкий 8-летний бленд</span>
+            </div>
+            <span class="menu-row__price">350 ₽</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- КОНЬЯК & КРЕПКИЙ АЛКОГОЛЬ -->
+      <section class="menu-category-section" id="cat-cognac">
+        <div class="menu-category-heading">
+          <h2 class="menu-category-heading__title">Коньяк & Крепкие напитки</h2>
+        </div>
+        <div class="menu-items-table">
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Курвуазье XO</span>
+              <span class="menu-row__desc">Франция · элитный коньяк</span>
+            </div>
+            <span class="menu-row__price">3 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Реми Мартан ВСОП</span>
+              <span class="menu-row__desc">Франция · выдержанный коньяк</span>
+            </div>
+            <span class="menu-row__price">1 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Мартель ВС</span>
+              <span class="menu-row__desc">Франция · классический коньяк</span>
+            </div>
+            <span class="menu-row__price">790 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Бумбу Ориджинал</span>
+              <span class="menu-row__desc">Барбадос · крафтовый пряный ром</span>
+            </div>
+            <span class="menu-row__price">890 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Милагро Репосадо</span>
+              <span class="menu-row__desc">Мексика · премиальная текила 100% агава</span>
+            </div>
+            <span class="menu-row__price">650 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Бифитер</span>
+              <span class="menu-row__desc">Великобритания · лондонский сухой джин</span>
+            </div>
+            <span class="menu-row__price">490 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Ольмека Голд / Бланка</span>
+              <span class="menu-row__desc">Мексика · золотая и серебряная текила</span>
+            </div>
+            <span class="menu-row__price">450 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Капитан Морган Блэк Спайсд</span>
+              <span class="menu-row__desc">Ямайка · темный пряный ром</span>
+            </div>
+            <span class="menu-row__price">450 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Абсолют в ассортименте</span>
+              <span class="menu-row__desc">Швеция · премиум водка</span>
+            </div>
+            <span class="menu-row__price">330 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Финляндия в ассортименте</span>
+              <span class="menu-row__desc">Финляндия · ледниковая водка</span>
+            </div>
+            <span class="menu-row__price">330 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Ягермайстер / Бехеровка</span>
+              <span class="menu-row__desc">Германия / Чехия · травяные ликеры</span>
+            </div>
+            <span class="menu-row__price">420 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Куантро / Калуа / Бейлис</span>
+              <span class="menu-row__desc">Франция / Мексика / Ирландия · ликеры</span>
+            </div>
+            <span class="menu-row__price">420 ₽</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ШАМПАНСКОЕ & ВИНА -->
+      <section class="menu-category-section" id="cat-champagne">
+        <div class="menu-category-heading">
+          <h2 class="menu-category-heading__title">Шампанское & Вина</h2>
+        </div>
+        <div class="menu-items-table">
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Моэт & Шандон Розе</span>
+              <span class="menu-row__desc">Франция · Шампань, розовое брют</span>
+            </div>
+            <span class="menu-row__price">18 900 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Моэт & Шандон Нектар Империал</span>
+              <span class="menu-row__desc">Франция · Шампань, полусухое</span>
+            </div>
+            <span class="menu-row__price">17 900 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Вдова Клико</span>
+              <span class="menu-row__desc">Франция · Шампань, классический брют</span>
+            </div>
+            <span class="menu-row__price">16 900 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Моэт & Шандон Империал Брют</span>
+              <span class="menu-row__desc">Франция · Шампань, брют</span>
+            </div>
+            <span class="menu-row__price">15 900 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Мартини Асти</span>
+              <span class="menu-row__desc">Италия · игристое белое сладкое</span>
+            </div>
+            <span class="menu-row__price">4 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Портвейн Копке Файн Тони Порто</span>
+              <span class="menu-row__desc">Португалия · коллекционный портвейн</span>
+            </div>
+            <span class="menu-row__price">4 900 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Рислинг белое сухое</span>
+              <span class="menu-row__desc">Германия · минеральное и свежее</span>
+            </div>
+            <span class="menu-row__price">3 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Пино Гриджио белое сухое</span>
+              <span class="menu-row__desc">Италия · элегантное легкое вино</span>
+            </div>
+            <span class="menu-row__price">3 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Каберне совиньон красное сухое</span>
+              <span class="menu-row__desc">Франция · насыщенное выдержанное вино</span>
+            </div>
+            <span class="menu-row__price">3 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Мерло красное сухое</span>
+              <span class="menu-row__desc">Италия · округлое с ягодными нотами</span>
+            </div>
+            <span class="menu-row__price">3 500 ₽</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- КОКТЕЙЛИ -->
+      <section class="menu-category-section" id="cat-cocktails">
+        <div class="menu-category-heading">
+          <h2 class="menu-category-heading__title">Авторские & Классические коктейли</h2>
+        </div>
+        <div class="menu-items-table">
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Фирменный коктейль «Вельвет»</span>
+              <span class="menu-row__desc">Авторский рецепт шеф-бармена клуба</span>
+            </div>
+            <span class="menu-row__price">2 000 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Авторский коктейль «Комплимент»</span>
+              <span class="menu-row__desc">Изысканная подача для очаровательных гостей</span>
+            </div>
+            <span class="menu-row__price">1 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Авторский коктейль «Знакомство»</span>
+              <span class="menu-row__desc">Яркий баланс премиального алкоголя и цитруса</span>
+            </div>
+            <span class="menu-row__price">1 000 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Лонг Айленд</span>
+              <span class="menu-row__desc">Классический крепкий освежающий микс</span>
+            </div>
+            <span class="menu-row__price">700 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Апероль Шприц</span>
+              <span class="menu-row__desc">Просекко, Апероль, содовая, апельсин</span>
+            </div>
+            <span class="menu-row__price">650 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Текила Санрайз</span>
+              <span class="menu-row__desc">Текила, апельсиновый сок, гренадин</span>
+            </div>
+            <span class="menu-row__price">650 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Маргарита</span>
+              <span class="menu-row__desc">Текила, трипл сек, сок лайма</span>
+            </div>
+            <span class="menu-row__price">650 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Б52</span>
+              <span class="menu-row__desc">Слоистый шот: кофейный ликер, Бейлис, Куантро</span>
+            </div>
+            <span class="menu-row__price">600 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Голубая лагуна</span>
+              <span class="menu-row__desc">Водка, блю кюрасао, спрайт</span>
+            </div>
+            <span class="menu-row__price">550 ₽</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ЗАКУСКИ & НАПИТКИ -->
+      <section class="menu-category-section" id="cat-snacks">
+        <div class="menu-category-heading">
+          <h2 class="menu-category-heading__title">Закуски & Безалкогольные напитки</h2>
+        </div>
+        <div class="menu-items-table">
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Мясная тарелка</span>
+              <span class="menu-row__desc">Ассорти сыровяленых деликатесов</span>
+            </div>
+            <span class="menu-row__price">1 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Сырная тарелка</span>
+              <span class="menu-row__desc">Благородные сыры с медом и орехами</span>
+            </div>
+            <span class="menu-row__price">1 500 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Конфеты Ferrero / Raffaello</span>
+              <span class="menu-row__desc">Итальянские шоколадные конфеты</span>
+            </div>
+            <span class="menu-row__price">1 300 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Маслины / Оливки гигант</span>
+              <span class="menu-row__desc">Отборные средиземноморские оливки</span>
+            </div>
+            <span class="menu-row__price">490 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Смесь орехов</span>
+              <span class="menu-row__desc">Миндаль, кешью, фундук</span>
+            </div>
+            <span class="menu-row__price">300 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Рэд Булл</span>
+              <span class="menu-row__desc">Энергетический напиток, 250 мл</span>
+            </div>
+            <span class="menu-row__price">400 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Кола / Спрайт / Тоник</span>
+              <span class="menu-row__desc">Освежающие газированные напитки</span>
+            </div>
+            <span class="menu-row__price">220 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Минеральная вода (газ / без газа)</span>
+              <span class="menu-row__desc">Премиальная столовая вода</span>
+            </div>
+            <span class="menu-row__price">200 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Соки в ассортименте</span>
+              <span class="menu-row__desc">Апельсин, яблоко, вишня, томат</span>
+            </div>
+            <span class="menu-row__price">180 ₽</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row__info">
+              <span class="menu-row__title">Чай заварной / Эспрессо / Американо</span>
+              <span class="menu-row__desc">Горячие напитки</span>
+            </div>
+            <span class="menu-row__price">200 - 400 ₽</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CRAZY MENU -->
+      <section class="menu-category-section" id="cat-crazy">
+        <div class="menu-category-heading">
+          <h2 class="menu-category-heading__title">Crazy Menu Шоу</h2>
+        </div>
+        <div class="crazy-grid">
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Приватный танец (6 минут)</h3>
+              <p class="crazy-item-card__desc">Чувственный приватный танец в уединенной комфортной ложе тет-а-тет.</p>
+            </div>
+            <div class="crazy-item-card__price">2 500 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Long приватный танец (9 минут)</h3>
+              <p class="crazy-item-card__desc">Удлиненный персональный приватный номер с индивидуальной хореографией.</p>
+            </div>
+            <div class="crazy-item-card__price">3 500 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Тематический приватный танец</h3>
+              <p class="crazy-item-card__desc">Сценический образ и костюмированный номер по вашему выбору.</p>
+            </div>
+            <div class="crazy-item-card__price">4 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Лесбос приват (6 минут)</h3>
+              <p class="crazy-item-card__desc">Парное страстное выступление двух артисток в приватной комнате.</p>
+            </div>
+            <div class="crazy-item-card__price">5 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Текила-боди</h3>
+              <p class="crazy-item-card__desc">Традиционная подача текилы с тела очаровательной танцовщицы.</p>
+            </div>
+            <div class="crazy-item-card__price">2 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Желание гостя</h3>
+              <p class="crazy-item-card__desc">Индивидуальное воплощение клубных фантазий по согласованию.</p>
+            </div>
+            <div class="crazy-item-card__price">4 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Свободное время (1 час)</h3>
+              <p class="crazy-item-card__desc">Приятное общение и сопровождение за столиком в течение часа.</p>
+            </div>
+            <div class="crazy-item-card__price">6 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Танец гостя на сцене (1 трек)</h3>
+              <p class="crazy-item-card__desc">Ваш звездный выход на главную сцену клуба под аплодисменты зала.</p>
+            </div>
+            <div class="crazy-item-card__price">3 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">VIP зал (1 час)</h3>
+              <p class="crazy-item-card__desc">Полная аренда изолированного VIP-зала с караоке и отдельным сервисом.</p>
+            </div>
+            <div class="crazy-item-card__price">5 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Танец вне очереди</h3>
+              <p class="crazy-item-card__desc">Мгновенное исполнение сольного сценического номера на сцене.</p>
+            </div>
+            <div class="crazy-item-card__price">2 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Дефиле артисток</h3>
+              <p class="crazy-item-card__desc">Парадный показ всех артисток вечера перед вашим столиком.</p>
+            </div>
+            <div class="crazy-item-card__price">1 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Продление работы клуба (1 час)</h3>
+              <p class="crazy-item-card__desc">Продление клубной ночи исключительно для вашей компании.</p>
+            </div>
+            <div class="crazy-item-card__price">20 000 ₽</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CRAZY MENU KARAOKE -->
+      <section class="menu-category-section" id="cat-karaoke">
+        <div class="menu-category-heading">
+          <h2 class="menu-category-heading__title">Crazy Menu Караоке</h2>
+        </div>
+        <div class="crazy-grid">
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">VIP статус в караоке</h3>
+              <p class="crazy-item-card__desc">Право исполнять две песни подряд в каждом общем песенном круге весь вечер.</p>
+            </div>
+            <div class="crazy-item-card__price">8 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Песня вне очереди</h3>
+              <p class="crazy-item-card__desc">Мгновенный переход микрофона к вашему столику без ожидания очереди.</p>
+            </div>
+            <div class="crazy-item-card__price">3 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Вторая песня вне очереди</h3>
+              <p class="crazy-item-card__desc">Вторая внеочередная песня подряд для продолжения выступления.</p>
+            </div>
+            <div class="crazy-item-card__price">5 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Третья песня вне очереди</h3>
+              <p class="crazy-item-card__desc">Третье внеочередное сольное выступление на сцене клуба.</p>
+            </div>
+            <div class="crazy-item-card__price">10 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Танец на пилоне под вашу песню</h3>
+              <p class="crazy-item-card__desc">Профессиональное Pole Dance шоу артистки под исполняемый вами трек.</p>
+            </div>
+            <div class="crazy-item-card__price">1 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Песня в исполнении ведущего</h3>
+              <p class="crazy-item-card__desc">Профессиональный вокальный номер ведущего вечера по вашему заказу.</p>
+            </div>
+            <div class="crazy-item-card__price">3 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Песня в исполнении танцовщицы</h3>
+              <p class="crazy-item-card__desc">Вокальный номер артистки шоу-балета специально для вас.</p>
+            </div>
+            <div class="crazy-item-card__price">3 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Песня в исполнении официанта</h3>
+              <p class="crazy-item-card__desc">Неожиданный яркий вокальный перформанс от персонала клуба.</p>
+            </div>
+            <div class="crazy-item-card__price">5 000 ₽</div>
+          </div>
+          <div class="crazy-item-card">
+            <div>
+              <h3 class="crazy-item-card__title">Аренда шумоподавляющих наушников</h3>
+              <p class="crazy-item-card__desc">Премиальные наушники для абсолютного комфорта от чужого пения.</p>
+            </div>
+            <div class="crazy-item-card__price">1 000 ₽</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__logo">
+        <img src="velvet_logo.png" alt="VELVET" height="28">
+      </div>
+      <div class="footer__links">
+        <a href="index.html#hero">Главная</a>
+        <a href="index.html#about">О клубе</a>
+        <a href="menu.html">Меню</a>
+        <a href="index.html#vip-room">VIP Room</a>
+        <a href="index.html#occasions">Особые поводы</a>
+        <a href="index.html#packages">VIP Боксы</a>
+        <a href="index.html#gallery">Галерея</a>
+        <a href="index.html#contact">Контакты</a>
+      </div>
+      <div class="footer__legal">
+        <a href="privacy-policy.html" class="footer__legal-link">Политика конфиденциальности</a>
+        <span class="footer__legal-sep">·</span>
+        <a href="personal-data-consent.html" class="footer__legal-link">Согласие на обработку персональных данных</a>
+      </div>
+      <p class="footer__copy">
+        © 2026 Velvet 39 · Калининград, ул. Генерал-фельдмаршала Румянцева, 5А · Ежедневно с 22:00
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet 39 | Премиальный ночной клуб и караоке в Калининграде</title>
+  <meta name="description" content="Премиальный ночной клуб 18+ и караоке Velvet 39 в историческом центре Калининграда на ул. Генерал-фельдмаршала Румянцева, 5А. VIP-комнаты, коллекционный бар, авторские шоу-программы. Ежедневно с 22:00.">
+  <meta name="keywords" content="Velvet 39, ночной клуб Калининград, караоке клуб Румянцева 5А, VIP ложа, приватные танцы, бар, мальчишник, день рождения">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Velvet 39 | Премиальный ночной клуб и караоке">
+  <meta property="og:description" content="Атмосфера безупречной роскоши, VIP Room, коллекционный бар и шоу-программы в Калининграде. Ежедневно с 22:00.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Polyfill for older browsers -->
+  <script async src="https://unpkg.com/es-module-shims@1.8.2/dist/es-module-shims.js"></script>
+
+  <!-- Import map for Three.js & Cannon-es 3D Physics -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "cannon-es": "https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Skip link for keyboard accessibility -->
+  <a href="#mainContent" class="skip-link">Перейти к основному содержанию</a>
+
+  <!-- Age Verification Modal (18+) -->
+  <div class="age-modal" id="ageModal" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="age-modal__backdrop"></div>
+    <div class="age-modal__dialog">
+      <div class="age-modal__badge">18+</div>
+      <h2 class="age-modal__title" id="ageTitle"><img src="velvet_logo.png" alt="VELVET" height="40" style="display:inline-block; filter: drop-shadow(0 0 8px rgba(212,175,55,0.4));"></h2>
+      <p class="age-modal__subtitle">Премиальный клуб · Калининград</p>
+      <div class="age-modal__divider"></div>
+      <p class="age-modal__text">
+        Сайт содержит материалы для совершеннолетней аудитории (18+). Доступ разрешен исключительно лицам, достигшим возраста 18 лет.
+      </p>
+      <p class="age-modal__question">Вам уже исполнилось 18 лет?</p>
+      <div class="age-modal__actions">
+        <button class="age-modal__btn age-modal__btn--accept" id="ageAcceptBtn">
+          Да, мне есть 18 лет
+        </button>
+        <button class="age-modal__btn age-modal__btn--reject" id="ageRejectBtn">
+          Мне меньше 18
+        </button>
+      </div>
+      <p class="age-modal__warning" id="ageWarning" style="display:none;">
+        Доступ ограничен. Перенаправление...
+      </p>
+    </div>
+  </div>
+
+  <!-- Cursor Follower (desktop) -->
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+  <!-- Fixed Age Badge -->
+  <div class="age-badge" aria-hidden="true">18+</div>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <header>
+    <nav class="nav" id="mainNav">
+      <a href="#hero" class="nav__logo">
+        <img src="velvet_logo.png" alt="VELVET" height="38">
+        <span>39</span>
+      </a>
+
+      <div class="nav__links">
+        <a href="#about" class="nav__link">О клубе</a>
+        <a href="menu.html" class="nav__link nav__link--menu-btn">Меню клуба</a>
+        <a href="#vip-room" class="nav__link">VIP Room</a>
+        <a href="#occasions" class="nav__link">Особые поводы</a>
+        <a href="#packages" class="nav__link">VIP Боксы</a>
+        <a href="#gallery" class="nav__link">Галерея</a>
+        <a href="#contact" class="nav__link">Контакты</a>
+      </div>
+
+      <div class="nav__right">
+        <a href="tel:+79062375785" class="nav__tel">+7 (906) 237-57-85</a>
+        <button class="nav__burger" id="navBurger" aria-label="Открыть навигационное меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Мобильное меню">
+    <a href="#hero" class="mobile-menu__link" data-mobile-link>Главная</a>
+    <a href="#about" class="mobile-menu__link" data-mobile-link>О клубе</a>
+    <a href="menu.html" class="mobile-menu__link" style="color: var(--gold);" data-mobile-link>Меню клуба</a>
+    <a href="#vip-room" class="mobile-menu__link" data-mobile-link>VIP Room</a>
+    <a href="#occasions" class="mobile-menu__link" data-mobile-link>Особые поводы</a>
+    <a href="#packages" class="mobile-menu__link" data-mobile-link>VIP Боксы</a>
+    <a href="#gallery" class="mobile-menu__link" data-mobile-link>Галерея</a>
+    <a href="#contact" class="mobile-menu__link" data-mobile-link>Контакты</a>
+    <a href="tel:+79062375785" class="mobile-menu__tel">+7 (906) 237-57-85</a>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- ═══ HERO SECTION ═══ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg-wrap">
+        <video
+          class="hero__bg-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="velvet_neon_hero.jpg"
+        >
+          <source src="1016.mp4" type="video/mp4">
+          <img
+            src="velvet_neon_hero.jpg"
+            alt="Кинематографичная атмосфера Velvet 39"
+            class="hero__bg-img"
+            width="1920"
+            height="1080"
+          >
+        </video>
+        <div class="hero__watermark-shield" aria-hidden="true"></div>
+        <div class="hero__bg-overlay"></div>
+      </div>
+
+      <canvas class="hero__money-canvas" id="moneyCanvas" aria-hidden="true"></canvas>
+
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          Премиальный ночной клуб & караоке
+        </div>
+
+        <div class="hero__brand-stage">
+          <img
+            src="velvet_logo.png"
+            alt="VELVET"
+            class="hero__brand-logo"
+            width="535"
+            height="128"
+          >
+        </div>
+
+        <h1 class="hero__title">
+          Клуб <span>&</span> Караоке
+        </h1>
+
+        <p class="hero__subtitle">
+          Пространство изысканной эстетики, уединенного VIP-комфорта и ярких шоу-программ в центре Калининграда.
+        </p>
+
+        <div class="hero__meta">
+          <span class="hero__meta-item">Калининград, ул. Генерал-фельдмаршала Румянцева, 5А</span>
+          <span class="hero__meta-item">·</span>
+          <span class="hero__meta-item">Ежедневно с 22:00</span>
+        </div>
+
+        <div class="hero__actions">
+          <a href="tel:+79062375785" class="hero__cta-primary">
+            Забронировать столик
+          </a>
+          <a href="menu.html" class="hero__cta-secondary">
+            Смотреть меню клуба
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ ABOUT SECTION ═══ -->
+    <section class="section about" id="about">
+      <div class="section__container">
+        <div class="about__grid">
+
+          <div class="about__media">
+            <img
+              src="about_golden_velvet.jpg"
+              alt="Золотая муза клуба Velvet 39"
+              class="about__img"
+              loading="lazy"
+            >
+            <div class="about__media-overlay"></div>
+          </div>
+
+          <div class="about__content">
+            <span class="section__kicker">О клубе Velvet 39</span>
+            <h2 class="section__title">
+              Роскошь без компромиссов
+            </h2>
+            <p class="about__lead">
+              Вечер, где страсть, профессиональное искусство и безупречный сервис создают незабываемые впечатления.
+            </p>
+            <p class="about__body">
+              Velvet 39 расположен в историческом центре Калининграда на ул. Генерал-фельдмаршала Румянцева, 5А. Мы создали камерное пространство для взыскательных гостей: роскошная бархатная отделка, глубокие пурпурные и неоновые акценты, превосходная акустика, изысканная карта напитков и приватная атмосфера для идеального отдыха.
+            </p>
+
+            <div class="about__features">
+              <div class="about__feature-card">
+                <h3 class="about__feature-title">VIP Ложи</h3>
+                <p class="about__feature-desc">Уединенные приватные пространства с индивидуальным обслуживанием и максимальным комфортом.</p>
+              </div>
+              <div class="about__feature-card">
+                <h3 class="about__feature-title">Караоке Премиум</h3>
+                <p class="about__feature-desc">Концертная акустическая система, профессиональные микрофоны и богатый каталог треков.</p>
+              </div>
+              <div class="about__feature-card">
+                <h3 class="about__feature-title">Сценические Шоу</h3>
+                <p class="about__feature-desc">Ежедневные хореографические постановки, сольные номера и выступления артисток клуба.</p>
+              </div>
+              <div class="about__feature-card">
+                <h3 class="about__feature-title">Коллекционный Бар</h3>
+                <p class="about__feature-desc">Шампанское Moët & Chandon, выдержанные сорта виски и авторские коктейли шеф-бармена.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ MENU TEASER BANNER (Links to dedicated Menu page) ═══ -->
+    <section class="section menu-teaser">
+      <div class="section__container">
+        <div class="menu-teaser__card">
+          <span class="section__kicker">Карта бара и Crazy Menu</span>
+          <h2 class="section__title">Коллекция напитков и клубных предложений</h2>
+          <p class="section__desc" style="max-width: 600px; margin: 0 auto;">
+            Ознакомьтесь с полным меню клуба: односолодовый виски, французский коньяк, шампанские дома, авторские миксы и эксклюзивное Crazy Menu на отдельной странице.
+          </p>
+
+          <div class="menu-teaser__categories">
+            <span class="menu-teaser__cat-pill">Виски & Односолодовые сорта</span>
+            <span class="menu-teaser__cat-pill">Коньяк & Премиум крепкое</span>
+            <span class="menu-teaser__cat-pill">Шампанское Moët & Chandon</span>
+            <span class="menu-teaser__cat-pill">Авторские коктейли</span>
+            <span class="menu-teaser__cat-pill">Деликатесные закуски</span>
+            <span class="menu-teaser__cat-pill">Crazy Menu & Приваты</span>
+            <span class="menu-teaser__cat-pill">Crazy Караоке</span>
+          </div>
+
+          <a href="menu.html" class="hero__cta-primary">
+            Перейти к полному меню клуба
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ VIP ROOM SECTION ═══ -->
+    <section class="section vip-room" id="vip-room">
+      <div class="section__container">
+        <div class="vip-room__grid">
+
+          <div class="vip-room__content">
+            <div class="vip-room__badge">Приватная зона</div>
+            <h2 class="vip-room__title">
+              VIP Room: Уединенный комфорт и персональный сервис
+            </h2>
+            <p class="vip-room__desc">
+              Эксклюзивный изолированный зал для статусных встреч, закрытых вечеринок и конфиденциального отдыха. Здесь вы остаетесь в собственном приватном пространстве с полным погружением в атмосферу ночного Velvet 39.
+            </p>
+
+            <div class="vip-room__perks">
+              <div class="vip-room__perk">
+                <div class="vip-room__perk-icon">✦</div>
+                <div class="vip-room__perk-text">
+                  <h4>Полная приватность и конфиденциальность</h4>
+                  <p>Автономный комфортный зал с отдельной зоной отдыха, исключающий постороннее внимание.</p>
+                </div>
+              </div>
+
+              <div class="vip-room__perk">
+                <div class="vip-room__perk-icon">✦</div>
+                <div class="vip-room__perk-text">
+                  <h4>Персонализированный сервис</h4>
+                  <p>Индивидуальный официант и бармен, приоритетная подача напитков и авторских коктейлей.</p>
+                </div>
+              </div>
+
+              <div class="vip-room__perk">
+                <div class="vip-room__perk-icon">✦</div>
+                <div class="vip-room__perk-text">
+                  <h4>Индивидуальная караоке-система</h4>
+                  <p>Студийный живой звук и микрофоны премиального уровня исключительно для вашей компании.</p>
+                </div>
+              </div>
+
+              <div class="vip-room__perk">
+                <div class="vip-room__perk-icon">✦</div>
+                <div class="vip-room__perk-text">
+                  <h4>Индивидуальная шоу-программа</h4>
+                  <p>Приватные сольные номера и танцевальные выступления артисток по вашему желанию.</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="tel:+79062375785" class="hero__cta-primary" style="align-self: flex-start;">
+              Забронировать VIP Room
+            </a>
+          </div>
+
+          <div class="vip-room__media">
+            <img
+              src="IMG_9527-1.jpg"
+              alt="Интерьер VIP Room в клубе Velvet 39"
+              class="vip-room__img"
+              loading="lazy"
+            >
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ SPECIAL OCCASIONS SECTION ═══ -->
+    <section class="section occasions" id="occasions">
+      <div class="section__container">
+        <div class="section__header">
+          <span class="section__kicker">Праздничные предложения</span>
+          <h2 class="section__title">Особые поводы</h2>
+          <p class="section__desc">
+            Специальные программы для празднования Дня рождения и незабываемого мальчишника.
+          </p>
+        </div>
+
+        <div class="occasions__grid">
+
+          <!-- День рождения -->
+          <article class="occasion-card">
+            <div class="occasion-card__media">
+              <img
+                src="promo_birthday.jpg"
+                alt="Празднование Дня рождения в клубе Velvet 39"
+                class="occasion-card__img"
+                loading="lazy"
+              >
+              <div class="occasion-card__media-overlay"></div>
+            </div>
+            <div class="occasion-card__body">
+              <h3 class="occasion-card__title">День рождения</h3>
+              <div class="occasion-card__price">Праздничный комплимент</div>
+
+              <div class="occasion-card__list">
+                <div class="occasion-card__item">
+                  <span class="occasion-card__check">✓</span>
+                  <span>Праздничный напиток</span>
+                </div>
+                <div class="occasion-card__item">
+                  <span class="occasion-card__check">✓</span>
+                  <span>Сценический номер</span>
+                </div>
+                <div class="occasion-card__item">
+                  <span class="occasion-card__check">✓</span>
+                  <span>Две песни в подарок</span>
+                </div>
+              </div>
+
+              <p class="occasion-card__note">
+                Предложение действительно в день рождения, а также за 7 дней до и 7 дней после при предъявлении документа, удостоверяющего личность.
+              </p>
+
+              <a href="tel:+79062375785" class="occasion-card__cta">
+                Забронировать праздник
+              </a>
+            </div>
+          </article>
+
+          <!-- Мальчишник -->
+          <article class="occasion-card">
+            <div class="occasion-card__media">
+              <img
+                src="promo_bachelor.jpg"
+                alt="Мальчишник в клубе Velvet 39"
+                class="occasion-card__img"
+                loading="lazy"
+              >
+              <div class="occasion-card__media-overlay"></div>
+            </div>
+            <div class="occasion-card__body">
+              <h3 class="occasion-card__title">Мальчишник</h3>
+              <div class="occasion-card__price">15 000 ₽</div>
+
+              <div class="occasion-card__list">
+                <div class="occasion-card__item">
+                  <span class="occasion-card__check">✓</span>
+                  <span>Кальян</span>
+                </div>
+                <div class="occasion-card__item">
+                  <span class="occasion-card__check">✓</span>
+                  <span>Сценический номер для жениха</span>
+                </div>
+                <div class="occasion-card__item">
+                  <span class="occasion-card__check">✓</span>
+                  <span>Приватный танец</span>
+                </div>
+                <div class="occasion-card__item">
+                  <span class="occasion-card__check">✓</span>
+                  <span>Пять песен в подарок</span>
+                </div>
+              </div>
+
+              <p class="occasion-card__note">
+                Дополните ваш вечер дополнительными услугами по вашим предпочтениям.
+              </p>
+
+              <a href="tel:+79062375785" class="occasion-card__cta">
+                Забронировать мальчишник
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ VIP PACKAGES (BOXES) SECTION ═══ -->
+    <section class="section packages" id="packages">
+      <div class="section__container">
+        <div class="section__header">
+          <span class="section__kicker">Готовые предложения</span>
+          <h2 class="section__title">VIP Боксы</h2>
+          <p class="section__desc">
+            Продуманные пакетные предложения для вашего вечера с напитками, караоке и приватными танцами.
+          </p>
+        </div>
+
+        <div class="packages__grid">
+
+          <!-- BOX M -->
+          <article class="package-card">
+            <div class="package-card__media">
+              <img src="box_m.png" alt="VIP Бокс M в клубе Velvet 39" class="package-card__img" loading="lazy">
+            </div>
+            <div class="package-card__body">
+              <div class="package-card__header">
+                <h3 class="package-card__name">Box M</h3>
+                <div class="package-card__price">5 600 ₽</div>
+              </div>
+              <div class="package-card__features">
+                <div class="package-card__feature">
+                  <span>✦</span> 1 приватный танец
+                </div>
+                <div class="package-card__feature">
+                  <span>✦</span> 3 порции Ballantine's с колой или соком на выбор
+                </div>
+                <div class="package-card__feature">
+                  <span>✦</span> 3 песни в караоке
+                </div>
+              </div>
+              <a href="tel:+79062375785" class="package-card__cta">Забронировать бокс</a>
+            </div>
+          </article>
+
+          <!-- BOX L -->
+          <article class="package-card">
+            <div class="package-card__media">
+              <img src="box_l.png" alt="VIP Бокс L в клубе Velvet 39" class="package-card__img" loading="lazy">
+            </div>
+            <div class="package-card__body">
+              <div class="package-card__header">
+                <h3 class="package-card__name">Box L</h3>
+                <div class="package-card__price">9 200 ₽</div>
+              </div>
+              <div class="package-card__features">
+                <div class="package-card__feature">
+                  <span>✦</span> 2 приватных танца
+                </div>
+                <div class="package-card__feature">
+                  <span>✦</span> 4 порции Jack Daniel's или Jameson с колой или соком на выбор
+                </div>
+                <div class="package-card__feature">
+                  <span>✦</span> 5 песен в караоке
+                </div>
+              </div>
+              <a href="tel:+79062375785" class="package-card__cta">Забронировать бокс</a>
+            </div>
+          </article>
+
+          <!-- BOX XL -->
+          <article class="package-card">
+            <div class="package-card__media">
+              <img src="box_xl.png" alt="VIP Бокс XL в клубе Velvet 39" class="package-card__img" loading="lazy">
+            </div>
+            <div class="package-card__body">
+              <div class="package-card__header">
+                <h3 class="package-card__name">Box XL</h3>
+                <div class="package-card__price">19 000 ₽</div>
+              </div>
+              <div class="package-card__features">
+                <div class="package-card__feature">
+                  <span>✦</span> 4 приватных танца
+                </div>
+                <div class="package-card__feature">
+                  <span>✦</span> 12 порций Jack Daniel's или Jameson с колой или соком на выбор
+                </div>
+                <div class="package-card__feature">
+                  <span>✦</span> 8 песен в караоке
+                </div>
+              </div>
+              <a href="tel:+79062375785" class="package-card__cta">Забронировать бокс</a>
+            </div>
+          </article>
+
+          <!-- BOX XXL -->
+          <article class="package-card">
+            <div class="package-card__media">
+              <img src="box_xxl.png" alt="VIP Бокс XXL в клубе Velvet 39" class="package-card__img" loading="lazy">
+            </div>
+            <div class="package-card__body">
+              <div class="package-card__header">
+                <h3 class="package-card__name">Box XXL</h3>
+                <div class="package-card__price">24 800 ₽</div>
+              </div>
+              <div class="package-card__features">
+                <div class="package-card__feature">
+                  <span>✦</span> 6 приватных танцев
+                </div>
+                <div class="package-card__feature">
+                  <span>✦</span> 16 порций Jack Daniel's или Jameson с колой или соком на выбор
+                </div>
+                <div class="package-card__feature">
+                  <span>✦</span> 10 песен в караоке
+                </div>
+              </div>
+              <a href="tel:+79062375785" class="package-card__cta">Забронировать бокс</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ GALLERY SECTION (Uses all 17 supplied photos) ═══ -->
+    <section class="section gallery" id="gallery">
+      <div class="section__container">
+        <div class="section__header">
+          <span class="section__kicker">Визуальная атмосфера</span>
+          <h2 class="section__title">Галерея клуба</h2>
+          <p class="section__desc">
+            Интерьеры, сценические шоу, приватные ложи и атмосфера вечера Velvet 39. Нажмите на фото для полноэкранного просмотра.
+          </p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="gallery__filters">
+          <button class="gallery__filter-btn active" data-filter="all">Все фото</button>
+          <button class="gallery__filter-btn" data-filter="interior">Интерьер & VIP</button>
+          <button class="gallery__filter-btn" data-filter="show">Сценическое шоу</button>
+          <button class="gallery__filter-btn" data-filter="atmosphere">Атмосфера</button>
+        </div>
+
+        <!-- Gallery Grid showcasing all 17 supplied photos -->
+        <div class="gallery__grid">
+
+          <div class="gallery__item" data-category="interior">
+            <img src="IMG_9558-1.jpg" alt="Неоновая вывеска и клубный интерьер Velvet 39" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="interior">
+            <img src="IMG_9527-1.jpg" alt="VIP Room и зона отдыха Velvet 39" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="show">
+            <img src="IMG_7291.JPG" alt="Сценический номер шоу-балета" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="show">
+            <img src="IMG_7184.JPG" alt="Сольное выступление на главной сцене" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="show">
+            <img src="IMG_9504-1.jpg" alt="Сценическая хореография Pole Dance" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="atmosphere">
+            <img src="IMG_7304.JPG" alt="Атмосфера клубного вечера" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="atmosphere">
+            <img src="IMG_9734-1.jpg" alt="Вечерняя эстетика клуба" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="show">
+            <img src="IMG_7316.JPG" alt="Хореографический сценический номер" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="atmosphere">
+            <img src="IMG_7342.JPG" alt="Приватная атмосфера в ложе" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="atmosphere">
+            <img src="IMG_7343.JPG" alt="Клубное освещение и антураж" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="show">
+            <img src="IMG_8965-1.jpg" alt="Сценический костюмированный перформанс" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="interior">
+            <img src="IMG_9413-1.jpg" alt="Интерьерные детали и сцена" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="atmosphere">
+            <img src="IMG_9479-1.jpg" alt="Атмосфера светового шоу" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="interior">
+            <img src="IMG_9109-1.jpg" alt="VIP ложа и диванные зоны" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="show">
+            <img src="IMG_9080-1.jpg" alt="Танцевальное сольное шоу" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="atmosphere">
+            <img src="IMG_8890-1.jpg" alt="Клубная энергетика и музыка" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+          <div class="gallery__item" data-category="show">
+            <img src="IMG_8818-1.jpg" alt="Сценическая пластика и грация" class="gallery__img" loading="lazy">
+            <div class="gallery__overlay">
+              <div class="gallery__zoom-icon">⤢</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal for Gallery Inspection -->
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Полноэкранный просмотр фото">
+      <div class="lightbox-modal__backdrop" id="lightboxBackdrop"></div>
+      <div class="lightbox-modal__container">
+        <button class="lightbox-modal__close" id="lightboxClose" aria-label="Закрыть просмотр">&times;</button>
+        <button class="lightbox-modal__prev" id="lightboxPrev" aria-label="Предыдущее фото">&#10094;</button>
+        <button class="lightbox-modal__next" id="lightboxNext" aria-label="Следующее фото">&#10095;</button>
+        <img src="" alt="Фото клуба Velvet 39" class="lightbox-modal__img" id="lightboxImg">
+        <div class="lightbox-modal__counter" id="lightboxCounter">1 / 17</div>
+      </div>
+    </div>
+
+
+    <!-- ═══ CONTACTS SECTION ═══ -->
+    <section class="section contacts" id="contact">
+      <div class="section__container">
+        <div class="section__header">
+          <span class="section__kicker">Бронирование и визит</span>
+          <h2 class="section__title">Контакты</h2>
+          <p class="section__desc">
+            Ждем вас ежедневно в историческом центре Калининграда. Рекомендуем предварительное бронирование столов и VIP-комнат.
+          </p>
+        </div>
+
+        <div class="contacts__grid">
+
+          <div class="contacts__card">
+            <div class="contacts__info-group">
+              <div class="contact-item">
+                <div class="contact-item__icon">📍</div>
+                <div>
+                  <div class="contact-item__label">Адрес клуба</div>
+                  <div class="contact-item__value">
+                    г. Калининград,<br>
+                    <strong>ул. Генерал-фельдмаршала Румянцева, 5А</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon">📞</div>
+                <div>
+                  <div class="contact-item__label">Телефон бронирования</div>
+                  <div class="contact-item__value">
+                    <a href="tel:+79062375785" class="contact-item__tel">+7 (906) 237-57-85</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon">⏰</div>
+                <div>
+                  <div class="contact-item__label">Режим работы</div>
+                  <div class="contact-item__value">
+                    <strong>Ежедневно с 22:00</strong> до последнего гостя
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="tel:+79062375785" class="hero__cta-primary" style="width: 100%; justify-content: center;">
+              Забронировать по телефону
+            </a>
+
+            <div class="contacts__socials">
+              <a href="https://t.me/velvet39" class="social-btn" aria-label="Telegram" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              </a>
+              <a href="https://vk.com/velvet39" class="social-btn" aria-label="ВКонтакте" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.27-1.422 2.18-3.61 2.18-3.61.119-.254.305-.491.745-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/></svg>
+              </a>
+              <a href="https://instagram.com/velvet39club" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="contacts__map-wrap">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?ll=20.485244%2C54.713200&z=16&pt=20.485309%2C54.713229%2Cpm2rdm&theme=dark"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              allowfullscreen="true"
+              title="Velvet 39 на Яндекс Картах — ул. Генерал-фельдмаршала Румянцева, 5А"
+            ></iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__logo">
+        <img src="velvet_logo.png" alt="VELVET" height="28">
+      </div>
+      <div class="footer__links">
+        <a href="#hero">Главная</a>
+        <a href="#about">О клубе</a>
+        <a href="menu.html">Меню</a>
+        <a href="#vip-room">VIP Room</a>
+        <a href="#occasions">Особые поводы</a>
+        <a href="#packages">VIP Боксы</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contact">Контакты</a>
+      </div>
+      <div class="footer__legal">
+        <a href="privacy-policy.html" class="footer__legal-link">Политика конфиденциальности</a>
+        <span class="footer__legal-sep">·</span>
+        <a href="personal-data-consent.html" class="footer__legal-link">Согласие на обработку персональных данных</a>
+      </div>
+      <p class="footer__copy">
+        © 2026 Velvet 39 · Калининград, ул. Генерал-фельдмаршала Румянцева, 5А · Ежедневно с 22:00
+      </p>
+    </div>
+  </footer>
+
+  <!-- Cookie & Personal Data Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
+    <div class="cookie-banner__content">
+      <p class="cookie-banner__text">
+        Для обеспечения корректной работы сайта, анализа его использования и повышения качества наших услуг мы применяем файлы cookie. Продолжая использовать сайт, вы соглашаетесь с <a href="privacy-policy.html">Политикой конфиденциальности</a> и даете <a href="personal-data-consent.html">Согласие на обработку персональных данных</a>.
+      </p>
+      <button class="cookie-banner__btn" id="cookieAcceptBtn">Согласен</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- 3D Realistic Falling Money Physics (Three.js + Cannon-es) -->
+  <script type="module" src="hero-money-3d.js"></script>
+</body>
+</html>
